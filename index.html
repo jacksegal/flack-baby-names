@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#f6f1ea" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#1a1714" media="(prefers-color-scheme: dark)">
+  <meta name="robots" content="noindex">
+  <title>Baby Names</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='46' fill='%23c06a4a'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main>
+    <!-- Start -->
+    <section id="screen-start" class="screen screen-start">
+      <div class="start-inner">
+        <h1 class="title">Baby Names</h1>
+        <p class="lede">Rate each name based on your first reaction.</p>
+        <p id="start-progress" class="muted" hidden></p>
+      </div>
+      <div class="actions">
+        <button id="btn-start" class="btn btn-primary" type="button">Start rating</button>
+        <button id="btn-continue" class="btn btn-primary" type="button" hidden>Continue</button>
+        <button id="btn-restart" class="btn btn-quiet" type="button" hidden>Start again</button>
+      </div>
+    </section>
+
+    <!-- Rating -->
+    <section id="screen-rate" class="screen screen-rate" hidden>
+      <header class="topbar">
+        <button id="btn-back" class="link-btn" type="button">‹ Back</button>
+        <span id="progress-text" class="progress-text" aria-live="polite"></span>
+        <button id="btn-fwd" class="link-btn" type="button">Next ›</button>
+      </header>
+      <div class="progress" aria-hidden="true"><div id="progress-bar" class="progress-bar"></div></div>
+
+      <div class="name-wrap">
+        <h2 id="current-name" class="name"></h2>
+      </div>
+
+      <div class="choices" role="group" aria-label="Your rating">
+        <button class="choice choice-like" type="button" data-rating="Like" aria-pressed="false">
+          <span class="emoji" aria-hidden="true">❤️</span> Like
+        </button>
+        <button class="choice choice-meh" type="button" data-rating="Meh" aria-pressed="false">
+          <span class="emoji" aria-hidden="true">😐</span> Meh
+        </button>
+        <button class="choice choice-nope" type="button" data-rating="Don't like" aria-pressed="false">
+          <span class="emoji" aria-hidden="true">❌</span> Don’t like
+        </button>
+      </div>
+    </section>
+
+    <!-- Done -->
+    <section id="screen-done" class="screen screen-done" hidden>
+      <div class="done-inner">
+        <h1 class="title">All done!</h1>
+        <p id="done-count" class="lede"></p>
+        <ul class="tally">
+          <li><span aria-hidden="true">❤️</span> <strong id="tally-like">0</strong> Like</li>
+          <li><span aria-hidden="true">😐</span> <strong id="tally-meh">0</strong> Meh</li>
+          <li><span aria-hidden="true">❌</span> <strong id="tally-nope">0</strong> Don’t like</li>
+        </ul>
+      </div>
+      <div class="actions">
+        <button id="btn-download" class="btn btn-primary" type="button">Download CSV</button>
+        <button id="btn-copy" class="btn" type="button">Copy results</button>
+        <button id="btn-review" class="btn" type="button">Review ratings</button>
+        <button id="btn-restart-done" class="btn btn-quiet" type="button">Start again</button>
+      </div>
+    </section>
+
+    <!-- Review -->
+    <section id="screen-review" class="screen screen-review" hidden>
+      <header class="review-head">
+        <h1 class="review-title">Your ratings</h1>
+        <button id="btn-review-done" class="link-btn" type="button">Done</button>
+      </header>
+      <div id="filters" class="filters" role="group" aria-label="Filter"></div>
+      <ul id="review-list" class="review-list"></ul>
+    </section>
+  </main>
+
+  <script src="names.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
