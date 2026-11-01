@@ -35,6 +35,10 @@ window.BABY_NAMES = [
 
 Add, remove or reorder lines as you like. The order here is the order names are shown and exported. Ratings are saved by name, so existing ratings survive edits to the list; renaming an entry means that name needs rating again.
 
+## Updating the site
+
+Browsers and GitHub Pages cache `style.css`, `names.js` and `app.js` for a few minutes. `index.html` loads them with a version suffix (`?v=2`). Bump that number whenever you change any of them, so a phone never mixes a new page with old scripts.
+
 ## Storage
 
 Ratings are saved in the browser's `localStorage` (round 2 uses keys `babyNames.round2.ratings` and `babyNames.round2.index`; round 1's `babyNames.ratings` and `babyNames.index` are left untouched). They stay on that device and in that browser only — nothing is sent anywhere. Rating on your phone and then opening the site on your laptop starts fresh. Clearing site data, or using "Start again", deletes them.
