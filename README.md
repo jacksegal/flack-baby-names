@@ -1,6 +1,6 @@
 # Baby Names
 
-A tiny static web app for rating a list of baby names one at a time — ❤️ Like, 😐 Meh or ❌ Don't like — then exporting the results as a CSV.
+A tiny static web app for rating a list of baby names one at a time — ❤️ Love, 👍 Like or 🤷 Meh — then exporting the results as a CSV.
 
 Plain HTML, CSS and JavaScript. No build step, no backend, no tracking.
 
@@ -15,6 +15,11 @@ python3 -m http.server 8000
 ```
 
 then visit <http://localhost:8000>.
+
+## Rounds
+
+- **Round 1** rated 87 names as Like, Meh or Don't like.
+- **Round 2** (current) has the 35 names that neither of us rated Don't like, rated as Love, Like or Meh.
 
 ## Editing names
 
@@ -32,13 +37,13 @@ Add, remove or reorder lines as you like. The order here is the order names are 
 
 ## Storage
 
-Ratings are saved in the browser's `localStorage` (keys `babyNames.ratings` and `babyNames.index`). They stay on that device and in that browser only — nothing is sent anywhere. Rating on your phone and then opening the site on your laptop starts fresh. Clearing site data, or using "Start again", deletes them.
+Ratings are saved in the browser's `localStorage` (round 2 uses keys `babyNames.round2.ratings` and `babyNames.round2.index`; round 1's `babyNames.ratings` and `babyNames.index` are left untouched). They stay on that device and in that browser only — nothing is sent anywhere. Rating on your phone and then opening the site on your laptop starts fresh. Clearing site data, or using "Start again", deletes them.
 
 ## Export
 
 When every name is rated, the completion screen offers:
 
-- **Download CSV** — saves `baby-name-ratings.csv` with `Name,Rating` columns, in the list's original order. Values are always `Like`, `Meh` or `Don't like`. Opens cleanly in Excel, Numbers and Google Sheets.
+- **Download CSV** — saves `baby-name-ratings-round-2.csv` with `Name,Rating` columns, in the list's original order. Values are always `Love`, `Like` or `Meh`. Opens cleanly in Excel, Numbers and Google Sheets.
 - **Copy results** — copies the same `Name,Rating` lines (without the header) to the clipboard, ready to paste into a message.
 - **Review ratings** — see and change any answer; exports always use the latest answers.
 

@@ -2,13 +2,14 @@
   'use strict';
 
   const NAMES = window.BABY_NAMES;
-  const RATINGS = ['Like', 'Meh', "Don't like"];
-  const EMOJI = { Like: '❤️', Meh: '😐', "Don't like": '❌' };
-  const LABEL = { Like: 'Like', Meh: 'Meh', "Don't like": 'Don’t like' };
+  const RATINGS = ['Love', 'Like', 'Meh'];
+  const EMOJI = { Love: '❤️', Like: '👍', Meh: '🤷' };
+  const LABEL = { Love: 'Love', Like: 'Like', Meh: 'Meh' };
 
-  // localStorage keys. Ratings look like { "Cleo": "Meh", "Maia": "Like" }.
-  const RATINGS_KEY = 'babyNames.ratings';
-  const INDEX_KEY = 'babyNames.index';
+  // localStorage keys. Ratings look like { "Cleo": "Love", "Maia": "Meh" }.
+  // Round 2 uses its own keys so round 1 answers don't carry over (and aren't overwritten).
+  const RATINGS_KEY = 'babyNames.round2.ratings';
+  const INDEX_KEY = 'babyNames.round2.index';
 
   const SELECT_DELAY = 220; // ms to show the selected state before moving on
   const SWAP_DELAY = 130;   // ms for the name fade-out
@@ -82,9 +83,9 @@
 
   function showDone() {
     $('done-count').textContent = `${ratedCount()} names rated`;
+    $('tally-love').textContent = countOf('Love');
     $('tally-like').textContent = countOf('Like');
     $('tally-meh').textContent = countOf('Meh');
-    $('tally-nope').textContent = countOf("Don't like");
     show('screen-done');
   }
 
@@ -220,7 +221,7 @@
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
-    a.download = 'baby-name-ratings.csv';
+    a.download = 'baby-name-ratings-round-2.csv';
     document.body.appendChild(a);
     a.click();
     a.remove();
@@ -297,7 +298,7 @@
   // Keyboard shortcuts on desktop: 1/2/3 to rate, arrows to move.
   document.addEventListener('keydown', (e) => {
     if ($('screen-rate').hidden || e.metaKey || e.ctrlKey || e.altKey) return;
-    const keyRating = { 1: 'Like', 2: 'Meh', 3: "Don't like" }[e.key];
+    const keyRating = { 1: 'Love', 2: 'Like', 3: 'Meh' }[e.key];
     if (keyRating) rate(keyRating);
     else if (e.key === 'ArrowLeft') goBack();
     else if (e.key === 'ArrowRight') skipForward();

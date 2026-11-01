@@ -10,8 +10,8 @@
   --like-soft: #e2efe6;
   --meh: #94650f;
   --meh-soft: #f4ead4;
-  --nope: #b0432d;
-  --nope-soft: #f5e0d9;
+  --love: #b8325a;
+  --love-soft: #f7dfe6;
 
   --radius: 22px;
   --serif: ui-serif, "New York", "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
@@ -32,8 +32,8 @@
     --like-soft: #1f3328;
     --meh: #e2b55c;
     --meh-soft: #362b17;
-    --nope: #ec8a74;
-    --nope-soft: #3b221c;
+    --love: #f08aa6;
+    --love-soft: #3b1f28;
   }
 }
 
@@ -97,6 +97,15 @@ button:focus-visible {
 }
 
 .muted { color: var(--muted); }
+
+.eyebrow {
+  margin: 10px 0 0;
+  color: var(--accent);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
 
 .start-inner,
 .done-inner {
@@ -235,9 +244,9 @@ button:focus-visible {
 
 .choice:active { transform: scale(0.98); }
 
+.choice-love[aria-pressed="true"] { background: var(--love-soft); border-color: var(--love); color: var(--love); }
 .choice-like[aria-pressed="true"] { background: var(--like-soft); border-color: var(--like); color: var(--like); }
 .choice-meh[aria-pressed="true"]  { background: var(--meh-soft);  border-color: var(--meh);  color: var(--meh); }
-.choice-nope[aria-pressed="true"] { background: var(--nope-soft); border-color: var(--nope); color: var(--nope); }
 
 @media (hover: hover) {
   .btn:hover:not(.btn-primary), .choice:hover { border-color: var(--muted); }
@@ -346,9 +355,9 @@ button:focus-visible {
 }
 
 .seg button[aria-pressed="true"] { opacity: 1; }
+.seg button[data-rating="Love"][aria-pressed="true"] { background: var(--love-soft); border-color: var(--love); }
 .seg button[data-rating="Like"][aria-pressed="true"] { background: var(--like-soft); border-color: var(--like); }
 .seg button[data-rating="Meh"][aria-pressed="true"] { background: var(--meh-soft); border-color: var(--meh); }
-.seg button[data-rating="Don't like"][aria-pressed="true"] { background: var(--nope-soft); border-color: var(--nope); }
 
 .empty { color: var(--muted); padding: 24px 0; }
 

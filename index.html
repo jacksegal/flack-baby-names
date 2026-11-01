@@ -16,7 +16,8 @@
     <section id="screen-start" class="screen screen-start">
       <div class="start-inner">
         <h1 class="title">Baby Names</h1>
-        <p class="lede">Rate each name based on your first reaction.</p>
+        <p class="eyebrow">Round 2</p>
+        <p class="lede">Your shortlist. Love it, like it, or shrug.</p>
         <p id="start-progress" class="muted" hidden></p>
       </div>
       <div class="actions">
@@ -40,14 +41,14 @@
       </div>
 
       <div class="choices" role="group" aria-label="Your rating">
+        <button class="choice choice-love" type="button" data-rating="Love" aria-pressed="false">
+          <span class="emoji" aria-hidden="true">❤️</span> Love
+        </button>
         <button class="choice choice-like" type="button" data-rating="Like" aria-pressed="false">
-          <span class="emoji" aria-hidden="true">❤️</span> Like
+          <span class="emoji" aria-hidden="true">👍</span> Like
         </button>
         <button class="choice choice-meh" type="button" data-rating="Meh" aria-pressed="false">
-          <span class="emoji" aria-hidden="true">😐</span> Meh
-        </button>
-        <button class="choice choice-nope" type="button" data-rating="Don't like" aria-pressed="false">
-          <span class="emoji" aria-hidden="true">❌</span> Don’t like
+          <span class="emoji" aria-hidden="true">🤷</span> Meh
         </button>
       </div>
     </section>
@@ -58,9 +59,9 @@
         <h1 class="title">All done!</h1>
         <p id="done-count" class="lede"></p>
         <ul class="tally">
-          <li><span aria-hidden="true">❤️</span> <strong id="tally-like">0</strong> Like</li>
-          <li><span aria-hidden="true">😐</span> <strong id="tally-meh">0</strong> Meh</li>
-          <li><span aria-hidden="true">❌</span> <strong id="tally-nope">0</strong> Don’t like</li>
+          <li><span aria-hidden="true">❤️</span> <strong id="tally-love">0</strong> Love</li>
+          <li><span aria-hidden="true">👍</span> <strong id="tally-like">0</strong> Like</li>
+          <li><span aria-hidden="true">🤷</span> <strong id="tally-meh">0</strong> Meh</li>
         </ul>
       </div>
       <div class="actions">
