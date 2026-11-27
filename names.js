@@ -1,40 +1,24 @@
-// Round 2: the names neither of us rated "Don't like" in round 1, in the original order.
+// Round 3: the names we both rated Love or Like in round 2, in the original order.
+//   Both love:             Zadie, Maeve, Olive
+//   One loves, one likes:  Mary, Etta, Nina, Eloise, Lottie
+//   Both like:             Mira, Neta, Lena, Edie, Berry
 // Add, remove or correct names here — one per line, each in quotes with a comma.
 // Ratings are saved by name, so renaming an entry resets the rating for that name.
 window.BABY_NAMES = [
-  'Cleo',
-  'Maia',
-  'Elyse',
-  'Nora',
-  'Rema',
   'Mira',
-  'Annalise',
-  'Yvette',
-  'Ezri',
-  'Casey',
   'Zadie',
   'Maeve',
-  'Selene',
-  'Goldie',
-  'Mattie',
-  'Pearl',
   'Mary',
   'Etta',
   'Neta',
-  'Darcy',
-  'Anna',
-  'Marnie',
   'Olive',
-  'Dana',
   'Nina',
   'Lena',
-  'Thea',
-  'Edith',
-  'Enid',
   'Eloise',
   'Edie',
   'Berry',
   'Lottie',
-  'Lucy',
-  'Marcie',
 ];
+
+// Shown under each first name on the rating screen.
+window.BABY_SURNAME = 'Guppy-Segal';

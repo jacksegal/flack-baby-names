@@ -8,7 +8,7 @@
   <meta name="robots" content="noindex">
   <title>Baby Names</title>
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='46' fill='%23c06a4a'/%3E%3C/svg%3E">
-  <link rel="stylesheet" href="style.css?v=2">
+  <link rel="stylesheet" href="style.css?v=3">
 </head>
 <body>
   <main>
@@ -16,8 +16,8 @@
     <section id="screen-start" class="screen screen-start">
       <div class="start-inner">
         <h1 class="title">Baby Names</h1>
-        <p class="eyebrow">Round 2</p>
-        <p class="lede">Your shortlist. Love it, like it, or shrug.</p>
+        <p class="eyebrow">Round 3</p>
+        <p class="lede">The final 13. Yes or no?</p>
         <p id="start-progress" class="muted" hidden></p>
       </div>
       <div class="actions">
@@ -37,18 +37,18 @@
       <div class="progress" aria-hidden="true"><div id="progress-bar" class="progress-bar"></div></div>
 
       <div class="name-wrap">
-        <h2 id="current-name" class="name"></h2>
+        <h2 class="full-name">
+          <span id="current-name" class="name"></span>
+          <span id="current-surname" class="surname"></span>
+        </h2>
       </div>
 
-      <div class="choices" role="group" aria-label="Your rating">
-        <button class="choice choice-love" type="button" data-rating="Love" aria-pressed="false">
-          <span class="emoji" aria-hidden="true">❤️</span> Love
+      <div class="choices choices-pair" role="group" aria-label="Your answer">
+        <button class="choice choice-yes" type="button" data-rating="Yes" aria-pressed="false">
+          <span class="emoji" aria-hidden="true">✅</span> Yes
         </button>
-        <button class="choice choice-like" type="button" data-rating="Like" aria-pressed="false">
-          <span class="emoji" aria-hidden="true">👍</span> Like
-        </button>
-        <button class="choice choice-meh" type="button" data-rating="Meh" aria-pressed="false">
-          <span class="emoji" aria-hidden="true">🤷</span> Meh
+        <button class="choice choice-no" type="button" data-rating="No" aria-pressed="false">
+          <span class="emoji" aria-hidden="true">❌</span> No
         </button>
       </div>
     </section>
@@ -59,15 +59,14 @@
         <h1 class="title">All done!</h1>
         <p id="done-count" class="lede"></p>
         <ul class="tally">
-          <li><span aria-hidden="true">❤️</span> <strong id="tally-love">0</strong> Love</li>
-          <li><span aria-hidden="true">👍</span> <strong id="tally-like">0</strong> Like</li>
-          <li><span aria-hidden="true">🤷</span> <strong id="tally-meh">0</strong> Meh</li>
+          <li><span aria-hidden="true">✅</span> <strong id="tally-yes">0</strong> Yes</li>
+          <li><span aria-hidden="true">❌</span> <strong id="tally-no">0</strong> No</li>
         </ul>
       </div>
       <div class="actions">
         <button id="btn-download" class="btn btn-primary" type="button">Download CSV</button>
         <button id="btn-copy" class="btn" type="button">Copy results</button>
-        <button id="btn-review" class="btn" type="button">Review ratings</button>
+        <button id="btn-review" class="btn" type="button">Review answers</button>
         <button id="btn-restart-done" class="btn btn-quiet" type="button">Start again</button>
       </div>
     </section>
@@ -75,7 +74,7 @@
     <!-- Review -->
     <section id="screen-review" class="screen screen-review" hidden>
       <header class="review-head">
-        <h1 class="review-title">Your ratings</h1>
+        <h1 class="review-title">Your answers</h1>
         <button id="btn-review-done" class="link-btn" type="button">Done</button>
       </header>
       <div id="filters" class="filters" role="group" aria-label="Filter"></div>
@@ -83,7 +82,7 @@
     </section>
   </main>
 
-  <script src="names.js?v=2"></script>
-  <script src="app.js?v=2"></script>
+  <script src="names.js?v=3"></script>
+  <script src="app.js?v=3"></script>
 </body>
 </html>
