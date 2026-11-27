@@ -2,14 +2,15 @@
   'use strict';
 
   const NAMES = window.BABY_NAMES;
-  const RATINGS = ['Love', 'Like', 'Meh'];
-  const EMOJI = { Love: '❤️', Like: '👍', Meh: '🤷' };
-  const LABEL = { Love: 'Love', Like: 'Like', Meh: 'Meh' };
+  const SURNAME = window.BABY_SURNAME || '';
+  const RATINGS = ['Yes', 'No'];
+  const EMOJI = { Yes: '✅', No: '❌' };
+  const LABEL = { Yes: 'Yes', No: 'No' };
 
-  // localStorage keys. Ratings look like { "Cleo": "Love", "Maia": "Meh" }.
-  // Round 2 uses its own keys so round 1 answers don't carry over (and aren't overwritten).
-  const RATINGS_KEY = 'babyNames.round2.ratings';
-  const INDEX_KEY = 'babyNames.round2.index';
+  // localStorage keys. Ratings look like { "Zadie": "Yes", "Mira": "No" }.
+  // Each round uses its own keys so earlier answers don't carry over (and aren't overwritten).
+  const RATINGS_KEY = 'babyNames.round3.ratings';
+  const INDEX_KEY = 'babyNames.round3.index';
 
   const SELECT_DELAY = 220; // ms to show the selected state before moving on
   const SWAP_DELAY = 130;   // ms for the name fade-out
@@ -83,9 +84,8 @@
 
   function showDone() {
     $('done-count').textContent = `${ratedCount()} names rated`;
-    $('tally-love').textContent = countOf('Love');
-    $('tally-like').textContent = countOf('Like');
-    $('tally-meh').textContent = countOf('Meh');
+    $('tally-yes').textContent = countOf('Yes');
+    $('tally-no').textContent = countOf('No');
     show('screen-done');
   }
 
@@ -99,6 +99,8 @@
 
   const nameEl = $('current-name');
   const choiceButtons = document.querySelectorAll('.choice');
+  $('current-surname').textContent = SURNAME;
+  $('current-surname').hidden = !SURNAME;
 
   function renderRate() {
     const name = NAMES[index];
@@ -221,7 +223,7 @@
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
-    a.download = 'baby-name-ratings-round-2.csv';
+    a.download = 'baby-name-ratings-round-3.csv';
     document.body.appendChild(a);
     a.click();
     a.remove();
@@ -295,10 +297,10 @@
     if (btn) changeReviewRating(btn.closest('.review-row'), btn.dataset.rating);
   });
 
-  // Keyboard shortcuts on desktop: 1/2/3 to rate, arrows to move.
+  // Keyboard shortcuts on desktop: 1 or Y for Yes, 2 or N for No, arrows to move.
   document.addEventListener('keydown', (e) => {
     if ($('screen-rate').hidden || e.metaKey || e.ctrlKey || e.altKey) return;
-    const keyRating = { 1: 'Love', 2: 'Like', 3: 'Meh' }[e.key];
+    const keyRating = { 1: 'Yes', y: 'Yes', Y: 'Yes', 2: 'No', n: 'No', N: 'No' }[e.key];
     if (keyRating) rate(keyRating);
     else if (e.key === 'ArrowLeft') goBack();
     else if (e.key === 'ArrowRight') skipForward();

@@ -6,12 +6,10 @@
   --line: #e4dacd;
   --accent: #c06a4a;
 
-  --like: #2f7a55;
-  --like-soft: #e2efe6;
-  --meh: #94650f;
-  --meh-soft: #f4ead4;
-  --love: #b8325a;
-  --love-soft: #f7dfe6;
+  --yes: #2f7a55;
+  --yes-soft: #e2efe6;
+  --no: #b0432d;
+  --no-soft: #f5e0d9;
 
   --radius: 22px;
   --serif: ui-serif, "New York", "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
@@ -28,12 +26,10 @@
     --line: #3a332d;
     --accent: #e08b69;
 
-    --like: #79c99c;
-    --like-soft: #1f3328;
-    --meh: #e2b55c;
-    --meh-soft: #362b17;
-    --love: #f08aa6;
-    --love-soft: #3b1f28;
+    --yes: #79c99c;
+    --yes-soft: #1f3328;
+    --no: #ec8a74;
+    --no-soft: #3b221c;
   }
 }
 
@@ -205,16 +201,34 @@ button:focus-visible {
   min-height: 180px;
 }
 
-.name {
+.full-name {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  margin: 0;
   font-family: var(--serif);
   font-weight: 500;
+  text-align: center;
+}
+
+.name {
+  display: block;
   font-size: clamp(3.4rem, 18vw, 6rem);
   letter-spacing: -0.02em;
   line-height: 1;
-  margin: 0;
-  text-align: center;
   overflow-wrap: anywhere;
   transition: opacity 0.14s ease, transform 0.14s ease;
+}
+
+/* The surname stays put while first names change above it. */
+.surname {
+  display: block;
+  color: var(--muted);
+  font-size: clamp(1.4rem, 7vw, 2rem);
+  letter-spacing: 0.01em;
+  line-height: 1.1;
+  white-space: nowrap;
 }
 
 .name.leaving { opacity: 0; transform: translateY(-12px); }
@@ -244,9 +258,12 @@ button:focus-visible {
 
 .choice:active { transform: scale(0.98); }
 
-.choice-love[aria-pressed="true"] { background: var(--love-soft); border-color: var(--love); color: var(--love); }
-.choice-like[aria-pressed="true"] { background: var(--like-soft); border-color: var(--like); color: var(--like); }
-.choice-meh[aria-pressed="true"]  { background: var(--meh-soft);  border-color: var(--meh);  color: var(--meh); }
+.choices-pair { grid-template-columns: 1fr 1fr; }
+.choices-pair .choice { min-height: 104px; flex-direction: column; gap: 6px; font-size: 1.35rem; }
+.choices-pair .choice .emoji { font-size: 1.8rem; }
+
+.choice-yes[aria-pressed="true"] { background: var(--yes-soft); border-color: var(--yes); color: var(--yes); }
+.choice-no[aria-pressed="true"]  { background: var(--no-soft);  border-color: var(--no);  color: var(--no); }
 
 @media (hover: hover) {
   .btn:hover:not(.btn-primary), .choice:hover { border-color: var(--muted); }
@@ -355,9 +372,8 @@ button:focus-visible {
 }
 
 .seg button[aria-pressed="true"] { opacity: 1; }
-.seg button[data-rating="Love"][aria-pressed="true"] { background: var(--love-soft); border-color: var(--love); }
-.seg button[data-rating="Like"][aria-pressed="true"] { background: var(--like-soft); border-color: var(--like); }
-.seg button[data-rating="Meh"][aria-pressed="true"] { background: var(--meh-soft); border-color: var(--meh); }
+.seg button[data-rating="Yes"][aria-pressed="true"] { background: var(--yes-soft); border-color: var(--yes); }
+.seg button[data-rating="No"][aria-pressed="true"] { background: var(--no-soft); border-color: var(--no); }
 
 .empty { color: var(--muted); padding: 24px 0; }
 
